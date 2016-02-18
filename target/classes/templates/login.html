@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/layout :: headerFragment">
+    <title id="pageTitle">Login</title>
+</head>
+<body>
+    <th:block th:include="fragments/header :: header"></th:block>
+    <div class="container">
+        <form role="form" style="margin-left: 20em; margin-right: 20em">
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="login" class="form-control" id="login" placeholder="Enter login"/>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password"/>
+            </div>
+            <button type="submit" class="btn btn-default">Log In</button>
+        </form>
+    </div>
+</body>
+</html>

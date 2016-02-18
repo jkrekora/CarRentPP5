@@ -5,11 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import pp5.domain.Car;
 import pp5.respositories.CarRepository;
-
-import java.util.List;
 
 /**
  * Created by Rafał on 2016-02-18.
