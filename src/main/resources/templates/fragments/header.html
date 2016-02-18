@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+    <div th:fragment="header">
+        <div class="jumbotron" style="background-image: url(http://www.elitediscountautos.com/templates/251/images/headers/header-1.jpg); background-size: 100%;">
+            <div align="right" style="margin: 50px;">
+                <button type="button" class="btn btn-success"><a href="/login">Login</a></button><button type="button" class="btn btn-info"><a href="/register">Register</a></button>
+            </div>
+            <h1 align="center">Badass Car Rent</h1>
+            <p align="center">Being cool is not easy</p>
+        </div>
+        <div class="btn-group btn-group-justified">
+            <a href="/" class="btn btn-primary">Main</a>
+            <a href="/cars" class="btn btn-primary">Select your dream</a>
+            <a href="/about" class="btn btn-primary">About us</a>
+        </div>
+    </div>
+</body>
+</html>
