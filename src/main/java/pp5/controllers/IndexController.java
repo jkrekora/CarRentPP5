@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pp5.respositories.CarRepository;
+import pp5.services.CarService;
 
 /**
  * Created by Rafał on 2016-02-18.
@@ -15,11 +16,11 @@ import pp5.respositories.CarRepository;
 public class IndexController {
 
     @Autowired
-    private CarRepository carRepository;
+    private CarService carService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getCars(Model model) {
-        model.addAttribute("cars", carRepository.findByIdLessThan(4));
+        model.addAttribute("cars", carService.getFirstNumberOfCar(3));
         return "index";
     }
 }

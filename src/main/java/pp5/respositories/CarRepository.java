@@ -17,8 +17,4 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
     List<Car> findBySegment(String segment);
 
     List<Car> findByIdLessThan(int id);
-//    @Query("select c from Country c where c.name != :name")
-//    public List<Country> findByNameNotQuery(@Param("name") String countryName);
-//    @Query("select c from Cars c where c.id < :value")
-//    List<Car> findLesserThan(@Param("value") int value);
 }
