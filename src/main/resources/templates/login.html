@@ -6,16 +6,22 @@
 <body>
     <th:block th:include="fragments/header :: header"></th:block>
     <div class="container">
-        <form role="form" style="margin-left: 20em; margin-right: 20em">
+        <form name="f" th:action="@{/login}" method="POST" role="form" style="margin-left: 20em; margin-right: 20em">
+            <div th:if="${param.error}">
+                Invalid username and password.
+            </div>
+            <div th:if="${param.logout}">
+                You have been logged out.
+            </div>
             <div class="form-group">
                 <label for="login">Login</label>
-                <input type="login" class="form-control" id="login" placeholder="Enter login"/>
+                <input name="username" type="login" class="form-control" id="login" placeholder="Enter login" value=""/>
             </div>
             <div class="form-group">
                 <label for="pwd">Password:</label>
-                <input type="password" class="form-control" id="pwd" placeholder="Enter password"/>
+                <input name="password" type="password" class="form-control" id="pwd" placeholder="Enter password"/>
             </div>
-            <button type="submit" class="btn btn-default">Log In</button>
+            <button name="submit" type="submit" class="btn btn-default">Log In</button>
         </form>
     </div>
 </body>
