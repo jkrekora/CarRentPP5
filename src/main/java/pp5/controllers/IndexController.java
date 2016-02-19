@@ -14,16 +14,12 @@ import pp5.respositories.CarRepository;
 @RequestMapping("/")
 public class IndexController {
 
-    private final CarRepository carRepository;
-
     @Autowired
-    public IndexController(CarRepository carRepository) {
-        this.carRepository = carRepository;
-    }
+    private CarRepository carRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getCars(Model model) {
-        model.addAttribute("cars", carRepository.findAll());
+        model.addAttribute("cars", carRepository.findByIdLessThan(4));
         return "index";
     }
 }

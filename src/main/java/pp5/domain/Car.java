@@ -22,7 +22,7 @@ public class Car {
 
     @NotNull
     private double price;
-    private String imageURI;
+    private String imageUrl;
 
     public Integer getId() {
         return id;
@@ -56,11 +56,11 @@ public class Car {
         this.price = price;
     }
 
-    public String getImageURI() {
-        return imageURI;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageURI(String imageURI) {
-        this.imageURI = imageURI;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
