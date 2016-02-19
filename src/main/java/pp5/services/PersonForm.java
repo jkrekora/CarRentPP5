@@ -8,15 +8,15 @@ import javax.validation.constraints.Size;
  */
 public class PersonForm {
     @NotNull
-    @Size(min = 1)
+    @Size(min=2, max=30)
     private String username;
 
     @NotNull
-    @Size(min = 1)
+    @Size(min=2, max=30)
     private String password;
 
     @NotNull
-    @Size(min = 1)
+    @Size(min=2, max=30)
     private String email;
 
     public String getUsername() {

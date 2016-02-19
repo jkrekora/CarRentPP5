@@ -7,5 +7,5 @@ import pp5.validation.UserExistsException;
  * Created by Rafał on 2016-02-19.
  */
 public interface UserService {
-    User registerNewUserAccount(UserDto accountDto) throws UserExistsException;
+    User registerNewUserAccount(PersonForm accountDto) throws UserExistsException;
 }

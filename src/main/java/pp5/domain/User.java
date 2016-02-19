@@ -7,28 +7,28 @@ import javax.persistence.*;
 public class User {
 
 	@Id
-    private String userName;
+    private String username;
     private String password;
     private String email;
-	private int enabled;
+	private int enabled = 1;
 	
 	public User(){
 		
 	}
 	
 	public User(User user) {
-		this.userName = user.userName;
+		this.username = user.username;
 		this.email = user.email;
 		this.password = user.password;
 		this.enabled=user.enabled;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -54,4 +54,5 @@ public class User {
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
+
 }
