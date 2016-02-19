@@ -24,4 +24,9 @@ public class CarServiceImpl implements CarService {
     public List<Car> getFirstNumberOfCar(int count) {
         return carRepository.findByIdLessThan(count + 1);
     }
+
+    @Override
+    public List<Car> getListBySegment(String segment) {
+        return carRepository.findBySegment(segment);
+    }
 }
