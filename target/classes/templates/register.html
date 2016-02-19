@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/layout :: headerFragment">
+    <title id="pageTitle">Login</title>
+</head>
+<body>
+<th:block th:include="fragments/header :: header"></th:block>
+<div class="container">
+    <h2>Enter your data into fields below</h2>
+    <form th:action="@{/register}" method="post" role="form">
+        <div class="form-group">
+            <label for="login">Login</label>
+            <input name="username" type="login" class="form-control" id="login" placeholder="Enter login"/>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input name="password" type="password" class="form-control" id="pwd" placeholder="Enter password"/>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Confirm password</label>
+            <input name="matchingPassword" type="password" class="form-control" id="pwd-confirm" placeholder="Confirm password"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input name="email" type="email" class="form-control" id="email" placeholder="Enter email"/>
+        </div>
+        <button name="submit" type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <!--<form name="f" th:action="@{/login}" method="POST" role="form" style="margin-left: 20em; margin-right: 20em">-->
+        <!--<div th:if="${param.error}">-->
+            <!--Invalid username and password.-->
+        <!--</div>-->
+        <!--<div th:if="${param.logout}">-->
+            <!--You have been logged out.-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label for="login">Login</label>-->
+            <!--<input name="username" type="login" class="form-control" id="login" placeholder="Enter login" value=""/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label for="pwd">Password:</label>-->
+            <!--<input name="password" type="password" class="form-control" id="pwd" placeholder="Enter password"/>-->
+        <!--</div>-->
+        <!--<button name="submit" type="submit" class="btn btn-default">Log In</button>-->
+    <!--</form>-->
+</div>
+</body>
+</html>
