@@ -26,8 +26,8 @@ public class Car {
     private double price;
     private String imageUrl;
 
-    private Timestamp reservationEnd;
-    private Timestamp rentEnd;
+    private Timestamp reservationEnd = new Timestamp(0);
+    private Timestamp rentEnd =  new Timestamp(0);
 
     public Integer getId() {
         return id;

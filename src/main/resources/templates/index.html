@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head th:include="fragments/layout :: headerFragment">
     <title id="pageTitle">Index</title>
 </head>
 <body>
     <th:block th:include="fragments/header :: header"></th:block>
     <div class="container">
+        <div sec:authorize="hasRole('ROLE_USER')">
+           user
+        </div>
+        <div sec:authorize="isAnonymous()">
+            anon
+        </div>
         <h2>Welcome to Badass Car Rent</h2>
         <div th:if="${not #lists.isEmpty(cars)}">
             <h2>Some of our horse-power beasts</h2>

@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 </head>
 <body>
     <div th:fragment="header">
         <div class="jumbotron" style="background-image: url(http://www.elitediscountautos.com/templates/251/images/headers/header-1.jpg); background-size: 100%;">
             <div align="right" style="margin: 50px;">
-                <button type="button" class="btn btn-success"><a href="/login">Login</a></button>
-                <button type="button" class="btn btn-info"><a href="/register">Register</a></button>
+                <a sec:authorize="isAnonymous()" href="/login"><button type="button" class="btn btn-success">Login</button></a>
+                <a sec:authorize="hasRole('ROLE_USER')" href="/logout"><button type="button" class="btn btn-success">Logout</button></a>
+                <a href="/register"><button type="button" class="btn btn-info">Register</button></a>
             </div>
             <h1 align="center">Badass Car Rent</h1>
             <p align="center">Being cool is not easy</p>
