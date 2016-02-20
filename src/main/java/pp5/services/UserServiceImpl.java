@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
     private User createAccount(User user) {
         User registered = userRepository.save(user);
         if (registered != null) {
-            UserRole userRole = new UserRole(user.getUsername(), "ROLE_USER");
+            UserRole userRole = new UserRole(user, "ROLE_USER");
             userRoleRepository.save(userRole);
             return registered;
         }

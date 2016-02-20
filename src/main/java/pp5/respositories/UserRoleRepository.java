@@ -8,5 +8,5 @@ import pp5.domain.UserRole;
  * Created by Rafał on 2016-02-19.
  */
 @Repository
-public interface UserRoleRepository extends JpaRepository<UserRole, String> {
+public interface UserRoleRepository extends JpaRepository<UserRole, Integer> {
 }

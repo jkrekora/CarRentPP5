@@ -3,6 +3,8 @@ package pp5.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * Created by Rafał on 2016-02-18.
@@ -23,6 +25,9 @@ public class Car {
     @NotNull
     private double price;
     private String imageUrl;
+
+    private Timestamp reservationEnd;
+    private Timestamp rentEnd;
 
     public Integer getId() {
         return id;
@@ -62,5 +67,21 @@ public class Car {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Timestamp getReservationEnd() {
+        return reservationEnd;
+    }
+
+    public void setReservationEnd(Timestamp reservationEnd) {
+        this.reservationEnd = reservationEnd;
+    }
+
+    public Timestamp getRentEnd() {
+        return rentEnd;
+    }
+
+    public void setRentEnd(Timestamp rentEnd) {
+        this.rentEnd = rentEnd;
     }
 }

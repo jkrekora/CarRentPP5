@@ -1,33 +1,44 @@
 package pp5.domain;
 
 import javax.management.relation.Role;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Rafał on 2016-02-19.
  */
 @Entity
 @Table(name = "authorities")
-public class UserRole {
+public class UserRole implements Serializable {
     @Id
-    private String username;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="username")
+    private User username;
     private String authority;
 
     public UserRole() {
     }
 
-    public UserRole(String username, String authority) {
+    public UserRole(User username, String authority) {
         this.username = username;
         this.authority = authority;
     }
 
-    public String getUsername() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public User getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(User username) {
         this.username = username;
     }
 

@@ -11,10 +11,13 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private Integer carId;
-    private String username;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "car_id")
+    private Car carId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "username")
+    private User username;
     private boolean status;
-
 
     public Integer getId() {
         return id;
@@ -24,19 +27,19 @@ public class Order {
         this.id = id;
     }
 
-    public Integer getCarId() {
+    public Car getCarId() {
         return carId;
     }
 
-    public void setCarId(Integer carId) {
+    public void setCarId(Car carId) {
         this.carId = carId;
     }
 
-    public String getUsername() {
+    public User getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(User username) {
         this.username = username;
     }
 
