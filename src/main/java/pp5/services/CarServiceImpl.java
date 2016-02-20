@@ -21,7 +21,12 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> getFirstNumberOfCar(int count) {
+    public Car getCarById(Integer id) {
+        return carRepository.findOne(id);
+    }
+
+    @Override
+    public List<Car> getListOfCar(int count) {
         return carRepository.findByIdLessThan(count + 1);
     }
 

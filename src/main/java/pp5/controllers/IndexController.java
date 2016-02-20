@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pp5.respositories.CarRepository;
 import pp5.services.CarService;
 
 /**
@@ -20,7 +19,7 @@ public class IndexController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getCars(Model model) {
-        model.addAttribute("cars", carService.getFirstNumberOfCar(3));
+        model.addAttribute("cars", carService.getListOfCar(3));
         return "index";
     }
 }

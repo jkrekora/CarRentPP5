@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head th:include="fragments/layout :: headerFragment">
+    <title id="pageTitle">Select Car</title>
+</head>
+<body>
+<th:block th:include="fragments/header :: header"></th:block>
+<div class="container">
+    <h2>Car Details!</h2>
+    <div th:if="${not #lists.isEmpty(cars)}">
+        <div class="row">
+            <div th:each="car : ${cars}" class="col-sm-4 col-lg-12 col-md-8">
+                <div class="thumbnail">
+                    <img th:src="${car.imageUrl}" th:alt="${car.name}" style="width:300px;height:200px"/>
+                    <div class="caption">
+                        <h4 th:text="${car.price}" class="pull-right">$ per day.</h4>
+                        <h4><a th:text="${car.name}" href="#"></a>
+                        </h4>
+                        <p  th:text="${car.segment}"></p>
+                        <form th:action="${ '/car/'  + car.id}" method="post">
+                            <input name="carId" type="hidden" th:value="${car.id}"/>
+                            number of days
+                            <input name="daysQuatity" type="text" value="1"/>
+                            <input type="submit" value="Buy"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

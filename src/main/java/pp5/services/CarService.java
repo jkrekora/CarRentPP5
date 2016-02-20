@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface CarService {
     List<Car> getAll();
-    List<Car> getFirstNumberOfCar(int count);
+    List<Car> getListOfCar(int count);
     List<Car> getListBySegment(String segment);
+
+    Car getCarById(Integer id);
 }
