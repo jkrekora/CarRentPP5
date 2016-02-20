@@ -13,7 +13,7 @@
                 <div class="thumbnail">
                     <img th:src="${car.imageUrl}" th:alt="${car.name}" style="width:300px;height:200px"/>
                     <div class="caption">
-                        <h4 th:text="${car.price}" class="pull-right">$ per day.</h4>
+                        <h4 class="pull-right"><span th:text="${car.price}"></span>$ per day.</h4>
                         <h4><a th:text="${car.name}" href="#"></a>
                         </h4>
                         <p  th:text="${car.segment}"></p>

@@ -8,4 +8,5 @@ import pp5.validation.UserExistsException;
  */
 public interface UserService {
     User registerNewUserAccount(PersonForm accountDto) throws UserExistsException;
+    User findUserByUsername(String string);
 }
