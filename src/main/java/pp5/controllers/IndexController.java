@@ -22,4 +22,9 @@ public class IndexController {
         model.addAttribute("cars", carService.getListOfCar(3));
         return "index";
     }
+
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
+    public String showAbout() {
+        return "about";
+    }
 }
