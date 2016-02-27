@@ -32,7 +32,7 @@ public class CarServiceImpl implements CarService {
         List<Car> cars = carRepository.findAll();
         LinkedList<Car> carsToShow = new LinkedList<>();
         for (Car car : cars) {
-            if (canBeShow(car)){
+            if (isAvailable(car)){
                 carsToShow.add(car);
             }
         }
@@ -49,7 +49,7 @@ public class CarServiceImpl implements CarService {
         List<Car> cars = carRepository.findAll();
         LinkedList<Car> carsToShow = new LinkedList<>();
         for (Car car : cars){
-            if (canBeShow(car)){
+            if (isAvailable(car)){
                 carsToShow.add(car);
                 if (carsToShow.size() >= count) {
                     break;
@@ -64,7 +64,7 @@ public class CarServiceImpl implements CarService {
         List<Car> cars = carRepository.findBySegment(segment);
         LinkedList<Car> carsToShow = new LinkedList<>();
         for (Car car : cars) {
-            if (canBeShow(car)){
+            if (isAvailable(car)){
                 carsToShow.add(car);
             }
         }
@@ -72,7 +72,7 @@ public class CarServiceImpl implements CarService {
     }
 
 
-    private boolean canBeShow(Car car) {
+    private boolean isAvailable(Car car) {
         return !isRent(car) && !isReserved(car);
     }
 

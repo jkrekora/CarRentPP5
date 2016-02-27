@@ -10,12 +10,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pp5.domain.Car;
 import pp5.domain.Order;
-import pp5.services.CarService;
-import pp5.services.OrderForm;
-import pp5.services.OrderService;
+import pp5.domain.User;
+import pp5.services.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 
 /**
  * Created by Rafał on 2016-02-19.
@@ -27,6 +28,9 @@ public class CarController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/cars", method = RequestMethod.GET)
     public String showAll(Model model) {
@@ -57,35 +61,39 @@ public class CarController {
         Order order = orderService.createOrder(orderForm, username);
         if (order == null) {
             return "redirect:/cars/";
-        }//jakies factory zbudowac
+        }
+        Car car = carService.getCarById(orderForm.getCarId());
+        User user = userService.findUserByUsername(username);
         String redirectUrl = "https://ssl.dotpay.pl/test_payment/";
-        String template = "%s?id=%s&amount=%s&description=%s&control=%s&email=%s";
-        String adres = String.format(template, redirectUrl, "744139",
+        String template = "%s?" +
+                "id=%s&" +
+                "amount=%s&" +
+                "description=%s&" +
+                "URL=%s&" +
+                "control=%s&" +
+                "email=%s&" +
+                "type=%s&" +
+                "api_version=%s";
+        String url = String.format(template, redirectUrl, "744139",
                 order.getPrice(),
-                orderForm.getDaysQuantity()+ " dni wypozyczenia " + " nazwa",
+                orderForm.getDaysQuantity()+ " dni wypozyczenia " + car.getName(),
+                "http://vps247823.ovh.net/thanks/",
                 order.getId(),
-                "rafalPieprzyca@gmail.com");
-        return "redirect:" + adres;
+                user.getEmail(),
+                "3",
+                "dev");
+        return "redirect:" + url;
     }
 
-    @RequestMapping(value = "/payment/confirm", method = RequestMethod.POST)
-    public void confirmPayment() {
-        System.out.println("confirm");
+    @RequestMapping(value = "/payment/confirm/")
+    public void confirmPayment(HashMap<String,String> req) {
+        new DotpayCompletePayment(req);
     }
 
-    @RequestMapping(value = "/payment", method = RequestMethod.GET)
-    public String doPayment(Model model) {
-        String redirectUrl = "https://ssl.dotpay.pl/test_payment/";
-        String template = "%s?id=%s&amount=%s&description=%s&control=%s&firstname=%s&lastname=%s&email=%s";
-        String adres = String.format(template, redirectUrl, "744139", "1.0", "Zaplata", "1", "rafal", "pieprzyca", "rafalPieprzyca@gmail.com");
-        return "redirect:" + adres;
+    @RequestMapping(value = "/thanks/")
+    public String thanks() {
+        return "thanks";
     }
-    //https://ssl.dotpay.pl/test_payment/?id=744139
-    // &amount=1.0
-    // &description=Zaplata
-    // &control=25-01-2016&
-    // firstname=rafal
-    // &lastname=pieprzyca
-    // &email=rafalpieprzyca@gmail.com
+
 
 }
