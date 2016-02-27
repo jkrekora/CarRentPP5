@@ -26,8 +26,6 @@ public class Car {
     private double price;
     private String imageUrl;
 
-    private Timestamp reservationEnd = new Timestamp(0);
-    private Timestamp rentEnd =  new Timestamp(0);
 
     public Integer getId() {
         return id;
@@ -69,19 +67,4 @@ public class Car {
         this.imageUrl = imageUrl;
     }
 
-    public Timestamp getReservationEnd() {
-        return reservationEnd;
-    }
-
-    public void setReservationEnd(Timestamp reservationEnd) {
-        this.reservationEnd = reservationEnd;
-    }
-
-    public Timestamp getRentEnd() {
-        return rentEnd;
-    }
-
-    public void setRentEnd(Timestamp rentEnd) {
-        this.rentEnd = rentEnd;
-    }
 }

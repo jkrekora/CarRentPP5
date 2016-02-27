@@ -85,12 +85,12 @@ public class CarController {
         return "redirect:" + url;
     }
 
-    @RequestMapping(value = "/payment/confirm/")
+    @RequestMapping(value = "/payment/confirm/*",  method = { RequestMethod.GET, RequestMethod.POST })
     public void confirmPayment(HashMap<String,String> req) {
         new DotpayCompletePayment(req);
     }
 
-    @RequestMapping(value = "/thanks/")
+    @RequestMapping(value = "/thanks/*", method = { RequestMethod.GET, RequestMethod.POST })
     public String thanks() {
         return "thanks";
     }
