@@ -1,6 +1,9 @@
 package pp5.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * Created by Rafał on 2016-02-20.
@@ -17,7 +20,14 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "username")
     private User username;
-    private boolean status;
+    @NotNull
+    private boolean confirmed;
+    @NotNull
+    private Timestamp dateOfRent;
+    @NotNull
+    private Timestamp endDateOfRent;
+    @NotNull
+    private double price;
 
     public Integer getId() {
         return id;
@@ -43,11 +53,35 @@ public class Order {
         this.username = username;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isConfirmed() {
+        return confirmed;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
+    }
+
+    public Timestamp getDateOfRent() {
+        return dateOfRent;
+    }
+
+    public void setDateOfRent(Timestamp dateOfRent) {
+        this.dateOfRent = dateOfRent;
+    }
+
+    public Timestamp getEndDateOfRent() {
+        return endDateOfRent;
+    }
+
+    public void setEndDateOfRent(Timestamp endDateOfRent) {
+        this.endDateOfRent = endDateOfRent;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

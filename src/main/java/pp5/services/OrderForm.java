@@ -13,7 +13,7 @@ public class OrderForm {
 
     @NotNull
     @Min(1)
-    private int daysQuatity;
+    private int daysQuantity;
 
     public int getCarId() {
         return carId;
@@ -23,11 +23,11 @@ public class OrderForm {
         this.carId = carId;
     }
 
-    public int getDaysQuatity() {
-        return daysQuatity;
+    public int getDaysQuantity() {
+        return daysQuantity;
     }
 
-    public void setDaysQuatity(int daysQuatity) {
-        this.daysQuatity = daysQuatity;
+    public void setDaysQuantity(int daysQuantity) {
+        this.daysQuantity = daysQuantity;
     }
 }
