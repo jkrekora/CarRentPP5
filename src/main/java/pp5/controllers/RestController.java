@@ -6,8 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pp5.domain.Car;
 import pp5.domain.Order;
+import pp5.domain.User;
 import pp5.respositories.CarRepository;
 import pp5.respositories.OrderRepository;
+import pp5.services.OrderService;
+import pp5.services.UserService;
 
 import java.time.Instant;
 import java.time.LocalTime;
@@ -24,7 +27,13 @@ public class RestController {
     OrderRepository orderRepository;
 
     @Autowired
+    OrderService orderService;
+
+    @Autowired
     CarRepository carRepository;
+
+    @Autowired
+    UserService userService;
 
     @RequestMapping(value = "/resttest",method = RequestMethod.GET)
     public String testRest(){
@@ -49,5 +58,12 @@ public class RestController {
         }
 
         return carsToRent.toString();
+    }
+
+    @RequestMapping(value = "/orders",method = RequestMethod.GET)
+    public String ordersByUsername(){
+        User user = userService.findUserByUsername("user");
+        List<Order> orders = orderService.getUserOrders(user);
+        return orders.toString();
     }
 }

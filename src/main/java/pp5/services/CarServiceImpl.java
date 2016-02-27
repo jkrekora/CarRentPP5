@@ -72,7 +72,7 @@ public class CarServiceImpl implements CarService {
     }
 
 
-    private boolean isAvailable(Car car) {
+    public boolean isAvailable(Car car) {
         return !isRent(car) && !isReserved(car);
     }
 

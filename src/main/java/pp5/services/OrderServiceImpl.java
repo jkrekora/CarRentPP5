@@ -10,6 +10,7 @@ import pp5.respositories.OrderRepository;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -26,21 +27,26 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     CarService carService;
 
+    @Autowired
+    DiscountService discountService;
+
     @Override
     public Order createOrder(OrderForm orderForm, String username) {
         Car car = carService.getCarById(orderForm.getCarId());
         if (car == null) {
             return null;
         }
+        if (!carService.isAvailable(car)){
+            return null;
+        }
         User user = userService.findUserByUsername(username);
         if (user == null) {
             return null;
         }
-//        Calendar calendar = Calendar.getInstance();
-//        java.util.Date now = calendar.getTime();
         Timestamp dateOfRent = new Timestamp(System.currentTimeMillis());
         Timestamp endDateOfRent = new Timestamp(System.currentTimeMillis() + TimeUnit.DAYS.toMillis(orderForm.getDaysQuantity()));
         double price = car.getPrice() * orderForm.getDaysQuantity();
+        price = discountService.getPriceWithDiscount(user, orderForm.getDaysQuantity(), price);
         Order order = new Order();
         order.setCarId(car);
         order.setUsername(user);
@@ -50,4 +56,11 @@ public class OrderServiceImpl implements OrderService {
         order.setPrice(price);
         return orderRepository.save(order);
     }
+
+    @Override
+    public List<Order> getUserOrders(User user) {
+        return orderRepository.findByUsername(user);
+    }
+
+
 }

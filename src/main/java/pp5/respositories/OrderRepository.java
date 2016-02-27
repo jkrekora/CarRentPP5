@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import pp5.domain.Car;
 import pp5.domain.Order;
+import pp5.domain.User;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ import java.util.List;
 public interface OrderRepository extends JpaRepository<Order, Integer>{
     List<Order> findByCarIdOrderByDateOfRentDesc(Car car);
     List<Order> findByCarIdOrderByEndDateOfRentDesc(Car car);
+    List<Order> findByUsername(User user);
 }

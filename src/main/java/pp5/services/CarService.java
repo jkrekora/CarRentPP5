@@ -14,4 +14,5 @@ public interface CarService {
     List<Car> getListBySegment(String segment);
 
     Car getCarById(Integer id);
+    boolean isAvailable(Car car);
 }
